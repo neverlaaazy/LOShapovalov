@@ -13,7 +13,12 @@ function HomePage() {
             className="home-hero-square home-hero-square-front"
             aria-hidden="true"
           />
-          <img className="home-hero-image" src="/home-hero.webp" alt="" />
+          <img
+            className="home-hero-image"
+            src="/home-hero.webp"
+            alt=""
+            fetchPriority="high"
+          />
         </div>
 
         <div className="home-hero-content">

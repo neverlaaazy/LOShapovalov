@@ -75,9 +75,9 @@ function Layout() {
         </div>
 
         <div className="layout-container site-header-inner">
-          <Link className="brand" to="/" aria-label="На главную">
+          <Link className="brand" to="/">
             <span className="brand-logo-span">
-              <img className="brand-logo" src="/logo.svg" alt="logo" />
+              <img className="brand-logo" src="/logo.svg" alt="" />
             </span>
             <span>
               Юридический кабинет <br />
@@ -145,7 +145,7 @@ function Layout() {
           <div className="footer-main">
             <div className="footer-identity">
               <div className="footer-brand-row">
-                <Link className="footer-brand" to="/" aria-label="На главную">
+                <Link className="footer-brand" to="/">
                   <img src="/logo.svg" alt="" />
                   <span>
                     Юридический кабинет
@@ -159,7 +159,7 @@ function Layout() {
                   href="https://vk.ru/pravochel74"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="ВКонтакте"
+                  aria-label="VK — ВКонтакте"
                 >
                   VK
                 </a>
@@ -167,7 +167,7 @@ function Layout() {
                   href="https://2gis.ru/chelyabinsk/firm/70000001111067356?m=61.372636%2C55.12457%2F16"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="2ГИС"
+                  aria-label="2gis — 2ГИС"
                 >
                   2gis
                 </a>
@@ -175,7 +175,7 @@ function Layout() {
                   href="https://yandex.ru/maps/org/yuridicheskiy_kabinet_i_m_shapovalova/9955535378/?indoorLevel=1&ll=61.372649%2C55.124635&z=17.07"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Яндекс Карты"
+                  aria-label="Я — Яндекс Карты"
                 >
                   Я
                 </a>
