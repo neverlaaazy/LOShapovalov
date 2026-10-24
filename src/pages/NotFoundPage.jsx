@@ -8,8 +8,8 @@ function NotFoundPage() {
       <p className="page-lead">
         Возможно, адрес изменился или такой страницы ещё нет.
       </p>
-      <Link className="text-link" to="/">
-        Вернуться на главную <span aria-hidden="true">→</span>
+      <Link className="text-link-button" to="/">
+        НА ГЛАВНУЮ
       </Link>
     </section>
   )

@@ -103,7 +103,7 @@ function Layout() {
                 <NavLink className="site-nav-a" to="/about" onClick={closeMenu}>
                   СТОИМОСТЬ
                 </NavLink>
-                <NavLink className="site-nav-a" to="/about" onClick={closeMenu}>
+                <NavLink className="site-nav-a" to="/" end onClick={closeMenu}>
                   КОНТАКТЫ
                 </NavLink>
                 <NavLink
@@ -155,15 +155,30 @@ function Layout() {
                 </Link>
               </div>
               <div className="footer-socials" aria-label="Социальные сети">
-                <span role="img" aria-label="ВКонтакте">
+                <a
+                  href="https://vk.ru/pravochel74"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="ВКонтакте"
+                >
                   VK
-                </span>
-                <span role="img" aria-label="2ГИС">
+                </a>
+                <a
+                  href="https://2gis.ru/chelyabinsk/firm/70000001111067356?m=61.372636%2C55.12457%2F16"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="2ГИС"
+                >
                   2gis
-                </span>
-                <span role="img" aria-label="Яндекс">
+                </a>
+                <a
+                  href="https://yandex.ru/maps/org/yuridicheskiy_kabinet_i_m_shapovalova/9955535378/?indoorLevel=1&ll=61.372649%2C55.124635&z=17.07"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Яндекс Карты"
+                >
                   Я
-                </span>
+                </a>
               </div>
             </div>
 
@@ -172,7 +187,7 @@ function Layout() {
               <NavLink className="footer-nav-link" to="/" end>
                 ГЛАВНАЯ
               </NavLink>
-              <NavLink className="footer-nav-link" to="/about">
+              <NavLink className="footer-nav-link" to="/" end>
                 КОНТАКТЫ
               </NavLink>
               <NavLink className="footer-nav-link" to="/about">
