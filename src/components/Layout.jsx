@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import './Layout.css'
 
 function Layout() {
+  const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [copyMessage, setCopyMessage] = useState('')
   const copyMessageTimeout = useRef(null)
@@ -13,6 +14,52 @@ function Layout() {
     () => () => window.clearTimeout(copyMessageTimeout.current),
     [],
   )
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+
+    const mainContent = document.querySelector('.site-main-inner')
+    if (!mainContent || !('IntersectionObserver' in window)) {
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.1 },
+    )
+
+    const observeRevealElements = () => {
+      const revealElements = mainContent.querySelectorAll(
+        '.home-hero, .home-services, .page-content > *',
+      )
+
+      revealElements.forEach((element) => {
+        if (!element.classList.contains('scroll-reveal')) {
+          element.classList.add('scroll-reveal')
+          observer.observe(element)
+        }
+      })
+    }
+
+    observeRevealElements()
+    const mutationObserver = new MutationObserver(observeRevealElements)
+    mutationObserver.observe(mainContent, { childList: true, subtree: true })
+
+    return () => {
+      observer.disconnect()
+      mutationObserver.disconnect()
+      mainContent.querySelectorAll('.scroll-reveal').forEach((element) => {
+        element.classList.remove('scroll-reveal', 'is-visible')
+      })
+    }
+  }, [location.pathname])
 
   const showCopyMessage = (message) => {
     setCopyMessage(message)

@@ -269,7 +269,212 @@
   }
 }
 
+.home-services {
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 100%;
+  color: var(--text-dark);
+  background: var(--background-light);
+}
+
+.home-services::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--background-light);
+  box-shadow: 0 0 0 100vmax var(--background-light);
+  clip-path: inset(0 -100vmax);
+  content: '';
+}
+
+.home-services-inner {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 600px;
+  margin-inline: auto;
+  padding: 30px;
+}
+
+.section-title {
+  width: 515px;
+  max-width: 100%;
+  margin: 0 0 30px;
+  color: var(--text-dark);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.16;
+  text-transform: uppercase;
+}
+
+.home-services-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 442fr) minmax(0, 669fr);
+  align-items: start;
+  gap: 29px;
+}
+
+.home-services-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 442 / 473;
+  border-radius: 8px;
+  background: var(--surface);
+  object-fit: cover;
+  object-position: center top;
+}
+
+.home-services-content {
+  min-width: 0;
+}
+
+.home-services-accordion {
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--background-dark);
+}
+
+.home-service-item + .home-service-item {
+  border-top: 1px solid var(--background-light);
+}
+
+.home-service-item:first-child .home-service-trigger {
+  min-height: 40px;
+}
+
+.home-service-trigger {
+  display: flex;
+  width: 100%;
+  min-height: 39px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 16px;
+  border: 0;
+  color: var(--text-light);
+  background: var(--background-dark);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.home-service-trigger:hover {
+  background: var(--accent-dark);
+}
+
+.home-service-trigger:active {
+  transform: scale(0.995);
+}
+
+.home-service-trigger:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid var(--background-light);
+  outline-offset: -4px;
+  background: var(--accent-dark);
+}
+
+.home-service-chevron {
+  width: 20px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: var(--background-light);
+  transition: transform 160ms ease;
+}
+
+.home-service-chevron svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.home-service-trigger[aria-expanded='true'] .home-service-chevron {
+  transform: rotate(180deg);
+}
+
+.home-service-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 220ms ease,
+    opacity 180ms ease,
+    visibility 220ms;
+}
+
+.home-service-panel[aria-hidden='false'] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    grid-template-rows 220ms ease,
+    opacity 180ms ease,
+    visibility 0s;
+}
+
+.home-service-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.home-service-panel-content {
+  padding: 12px 16px 16px;
+  color: var(--text-light);
+  background: var(--accent-dark);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.home-service-panel-content p {
+  margin: 0;
+}
+
+.home-services-link {
+  display: block;
+  width: fit-content;
+  margin: 24px 0 0 auto;
+  padding: 5px 12px;
+}
+
 @media (max-width: 760px) {
+  .home-services-inner {
+    min-height: 0;
+    padding: 38px 16px 35px;
+  }
+
+  .section-title {
+    width: 100%;
+    margin-bottom: 36px;
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .home-services-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .home-services-image {
+    display: none;
+  }
+
+  .home-service-trigger {
+    padding: 4px 12px;
+    font-size: 14px;
+    line-height: 1.1;
+  }
+
+  .home-services-link {
+    margin-top: 20px;
+  }
+
   .page-content {
     padding: 64px 0 76px;
   }
@@ -292,4 +497,32 @@
     margin-bottom: 15px;
   }
 
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 420ms ease,
+    transform 420ms ease;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
