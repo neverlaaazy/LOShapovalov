@@ -54,6 +54,6 @@ code {
 }
 
 ::selection {
-  color: #fff;
-  background: var(--accent);
+  color: var(--text-dark);
+  background: #d9c9f2;
 }
