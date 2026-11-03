@@ -16,8 +16,29 @@ function Layout() {
   )
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    const scrollFrame = window.requestAnimationFrame(() => {
+      if (location.hash) {
+        const target = document.getElementById(location.hash.slice(1))
 
+        if (target) {
+          target.scrollIntoView({
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)')
+              .matches
+              ? 'auto'
+              : 'smooth',
+            block: 'start',
+          })
+          return
+        }
+      }
+
+      window.scrollTo(0, 0)
+    })
+
+    return () => window.cancelAnimationFrame(scrollFrame)
+  }, [location.pathname, location.hash])
+
+  useEffect(() => {
     const mainContent = document.querySelector('.site-main-inner')
     if (!mainContent || !('IntersectionObserver' in window)) {
       return undefined
@@ -150,7 +171,11 @@ function Layout() {
                 <NavLink className="site-nav-a" to="/about" onClick={closeMenu}>
                   СТОИМОСТЬ
                 </NavLink>
-                <NavLink className="site-nav-a" to="/" end onClick={closeMenu}>
+                <NavLink
+                  className="site-nav-a"
+                  to="/#contacts"
+                  onClick={closeMenu}
+                >
                   КОНТАКТЫ
                 </NavLink>
                 <NavLink
@@ -234,7 +259,7 @@ function Layout() {
               <NavLink className="footer-nav-link" to="/" end>
                 ГЛАВНАЯ
               </NavLink>
-              <NavLink className="footer-nav-link" to="/" end>
+              <NavLink className="footer-nav-link" to="/#contacts">
                 КОНТАКТЫ
               </NavLink>
               <NavLink className="footer-nav-link" to="/about">

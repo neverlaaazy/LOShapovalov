@@ -247,6 +247,7 @@ function HomePage() {
 
       <section
         className="home-contacts"
+        id="contacts"
         aria-labelledby="home-contacts-title"
       >
         <div className="home-contacts-inner">
