@@ -37,7 +37,7 @@ function Layout() {
 
     const observeRevealElements = () => {
       const revealElements = mainContent.querySelectorAll(
-        '.home-hero, .home-services, .page-content > *',
+        '.home-hero, .home-services, .home-contacts, .page-content > *',
       )
 
       revealElements.forEach((element) => {
@@ -183,7 +183,7 @@ function Layout() {
 
       <main className="site-main">
         <div className="layout-container site-main-inner">
-          <Outlet />
+          <Outlet context={{ copyContact }} />
         </div>
       </main>
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useOutletContext } from 'react-router-dom'
 
 const serviceItems = [
   {
@@ -143,6 +143,7 @@ const serviceItems = [
 
 function HomePage() {
   const [openServiceIndex, setOpenServiceIndex] = useState(null)
+  const { copyContact } = useOutletContext()
 
   return (
     <>
@@ -244,7 +245,111 @@ function HomePage() {
         </div>
       </section>
 
-      
+      <section
+        className="home-contacts"
+        aria-labelledby="home-contacts-title"
+      >
+        <div className="home-contacts-inner">
+          <div className="home-contact-content">
+            <h2 className="section-title" id="home-contacts-title">
+              Контакты
+            </h2>
+
+            <div className="home-contact-details">
+              <div>
+                <p className="home-contact-label">Адрес:</p>
+                <button
+                  className="site-contact-copy home-contact-address"
+                  type="button"
+                  onClick={() =>
+                    copyContact(
+                      'город Челябинск, улица Троицкая, дом 1"в", этаж 1, кабинет 109',
+                      'Адрес',
+                    )
+                  }
+                >
+                  город Челябинск, улица Троицкая,
+                  <br />
+                  дом 1&quot;в&quot;, этаж 1, кабинет 109
+                </button>
+              </div>
+
+              <div>
+                <p className="home-contact-label">Часы работы:</p>
+                <p className="home-contact-hours">
+                  - Пн-Пт: с 9:00 до 20:00
+                  <br />
+                  - Сб-Вс: по предварительной записи
+                </p>
+              </div>
+
+              <button
+                className="site-contact-copy home-contact-link"
+                type="button"
+                onClick={() => copyContact('+7 (922) 639-96-79', 'Телефон')}
+              >
+                +7 (922) 639-96-79
+              </button>
+              <button
+                className="site-contact-copy home-contact-link"
+                type="button"
+                onClick={() =>
+                  copyContact('pravorus74@yandex.ru', 'Email')
+                }
+              >
+                pravorus74@yandex.ru
+              </button>
+            </div>
+
+            <div className="home-contact-actions">
+              <div
+                className="home-contact-socials"
+                aria-label="Социальные сети"
+              >
+                <a
+                  href="https://vk.ru/pravochel74"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="VK — ВКонтакте"
+                >
+                  VK
+                </a>
+                <a
+                  href="https://2gis.ru/chelyabinsk/firm/70000001111067356?m=61.372636%2C55.12457%2F16"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="2gis — 2ГИС"
+                >
+                  2gis
+                </a>
+                <a
+                  href="https://yandex.ru/maps/org/yuridicheskiy_kabinet_i_m_shapovalova/9955535378/?indoorLevel=1&ll=61.372649%2C55.124635&z=17.07"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Я — Яндекс Карты"
+                >
+                  Я
+                </a>
+              </div>
+
+              <Link
+                className="text-link-button home-contact-request"
+                to="/about"
+              >
+                ОСТАВИТЬ ЗАЯВКУ
+              </Link>
+            </div>
+          </div>
+
+          <iframe
+            className="home-contacts-map"
+            src="https://yandex.ru/map-widget/v1/?ll=61.372649%2C55.124635&z=17&pt=61.372649%2C55.124635%2Cpm2rdm"
+            title="Карта проезда к юридическому кабинету в Челябинске"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </section>
     </>
   )
 }

@@ -443,6 +443,142 @@
   padding: 5px 12px;
 }
 
+.home-contacts {
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 100%;
+  color: var(--text-dark);
+  background: var(--background-light);
+}
+
+.home-contacts::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--background-light);
+  box-shadow: 0 0 0 100vmax var(--background-light);
+  clip-path: inset(0 -100vmax);
+  content: '';
+}
+
+.home-contacts-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 442fr) minmax(0, 758fr);
+  width: 100%;
+  max-width: 1200px;
+  min-height: 600px;
+  margin-inline: auto;
+}
+
+.home-contact-content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px;
+}
+
+.home-contact-content .section-title {
+  width: auto;
+  margin-bottom: 24px;
+}
+
+.home-contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.home-contact-label,
+.home-contact-hours {
+  margin: 0;
+}
+
+.home-contact-content .site-contact-copy {
+  border-radius: 2px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition:
+    color 160ms ease,
+    text-decoration-thickness 160ms ease;
+}
+
+.home-contact-address {
+  margin-top: 2px;
+}
+
+.home-contact-content .site-contact-copy:hover,
+.home-contact-content .site-contact-copy:focus-visible {
+  color: var(--text-hover-for-dark);
+  text-decoration-thickness: 2px;
+}
+
+.home-contact-content .site-contact-copy:focus-visible {
+  outline-color: var(--background-dark);
+  outline-offset: 3px;
+}
+
+.home-contact-link {
+  font-weight: 600;
+}
+
+.home-contact-actions {
+  display: contents;
+}
+
+.home-contact-socials {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.home-contact-socials a {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border: 2px solid var(--background-dark);
+  border-radius: 8px;
+  color: var(--text-light);
+  background: var(--background-dark);
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease-in-out,
+    color 160ms ease-in-out;
+}
+
+.home-contact-socials a:first-child,
+.home-contact-socials a:last-child {
+  font-size: 25px;
+}
+
+.home-contact-socials a:hover,
+.home-contact-socials a:focus-visible {
+  color: var(--text-dark);
+  background: var(--background-light);
+}
+
+.home-contact-socials a:focus-visible {
+  outline: 2px solid var(--background-dark);
+  outline-offset: 3px;
+}
+
+.home-contact-request {
+  margin-top: auto;
+}
+
+.home-contacts-map {
+  display: block;
+  width: 100%;
+  min-height: 600px;
+  border: 0;
+}
+
 @media (max-width: 760px) {
   .home-services-inner {
     min-height: 0;
@@ -475,6 +611,42 @@
     margin-top: 20px;
   }
 
+  .home-contacts-inner {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .home-contact-content {
+    min-height: 445px;
+    padding: 28px 24px 24px;
+  }
+
+  .home-contact-content .section-title {
+    margin-bottom: 24px;
+  }
+
+  .home-contact-details {
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .home-contact-socials,
+  .home-contact-request {
+    align-self: center;
+  }
+
+  .home-contact-socials {
+    margin-top: 18px;
+  }
+
+  .home-contact-request {
+    margin-top: auto;
+  }
+
+  .home-contacts-map {
+    min-height: 420px;
+  }
+
   .page-content {
     padding: 64px 0 76px;
   }
@@ -497,6 +669,49 @@
     margin-bottom: 15px;
   }
 
+}
+
+@media (min-width: 601px) and (max-width: 760px) {
+  .home-contact-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 166px;
+    grid-template-rows: auto auto;
+    column-gap: 24px;
+    align-items: start;
+    min-height: 0;
+    padding-block: 20px;
+  }
+
+  .home-contact-content .section-title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 12px;
+  }
+
+  .home-contact-details {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .home-contact-actions {
+    display: flex;
+    grid-column: 2;
+    grid-row: 2;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    gap: 16px;
+  }
+
+  .home-contact-socials {
+    grid-column: 2;
+    margin-top: 0;
+  }
+
+  .home-contact-request {
+    margin-top: 0;
+    white-space: nowrap;
+  }
 }
 
 .scroll-reveal {
