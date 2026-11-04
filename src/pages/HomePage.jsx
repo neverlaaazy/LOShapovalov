@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useOutletContext } from 'react-router-dom'
 
 const serviceItems = [
@@ -143,7 +143,25 @@ const serviceItems = [
 
 function HomePage() {
   const [openServiceIndex, setOpenServiceIndex] = useState(null)
+  const [isAboutMobile, setIsAboutMobile] = useState(() =>
+    window.matchMedia('(max-width: 1000px)').matches,
+  )
+  const [isAboutExpanded, setIsAboutExpanded] = useState(false)
   const { copyContact } = useOutletContext()
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 1000px)')
+    const updateAboutLayout = () => {
+      setIsAboutMobile(mediaQuery.matches)
+      if (!mediaQuery.matches) {
+        setIsAboutExpanded(false)
+      }
+    }
+
+    updateAboutLayout()
+    mediaQuery.addEventListener('change', updateAboutLayout)
+    return () => mediaQuery.removeEventListener('change', updateAboutLayout)
+  }, [])
 
   return (
     <>
@@ -175,6 +193,73 @@ function HomePage() {
             <Link className="text-link-button" to="/about">
               ОСТАВИТЬ ЗАЯВКУ
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-about" aria-labelledby="home-about-title">
+        <div className="home-about-inner">
+          <h2 className="section-title" id="home-about-title">
+            О нас
+          </h2>
+          <div className="home-about-content">
+            <div className="home-about-copy">
+              <p>
+                Юридический кабинет Игоря Шаповалова помогает разобраться в
+                правовых вопросах и определить, какие действия можно
+                предпринять в конкретной ситуации. В работе важно не только
+                изучить документы, но и понять обстоятельства дела и цели
+                человека, который обратился за помощью.
+              </p>
+              <div
+                className="home-about-extra"
+                id="home-about-extra"
+                aria-hidden={isAboutMobile && !isAboutExpanded}
+                inert={isAboutMobile && !isAboutExpanded}
+              >
+                <div className="home-about-extra-inner">
+                  <p>
+                    Обращения могут касаться возмещения ущерба после
+                    дорожно-транспортного происшествия или затопления,
+                    споров с продавцами, автосалонами, управляющими компаниями
+                    и другими организациями. Для каждого вопроса подбирается
+                    подходящий порядок действий — с учётом документов,
+                    сроков и обстоятельств конкретного дела.
+                  </p>
+                  <p>
+                    Работа над обращением начинается с обсуждения ситуации и
+                    анализа имеющихся материалов. Затем можно оценить
+                    возможные варианты: направить претензию, подготовить
+                    документы для переговоров или обратиться в суд. Клиенту
+                    объясняют основные этапы и помогают понять, какие сведения
+                    и документы потребуются.
+                  </p>
+                  <p>
+                    В ходе работы мы стараемся говорить о сложных правовых
+                    вопросах понятно и последовательно: что известно на данный
+                    момент, какие шаги доступны и какие обстоятельства могут
+                    повлиять на дальнейшее рассмотрение дела. Содержание и
+                    объём помощи определяются после знакомства с конкретным
+                    обращением.
+                  </p>
+                </div>
+              </div>
+              <button
+                className="home-about-toggle"
+                type="button"
+                aria-expanded={!isAboutMobile || isAboutExpanded}
+                aria-controls="home-about-extra"
+                onClick={() => setIsAboutExpanded((expanded) => !expanded)}
+              >
+                {isAboutExpanded ? 'Свернуть' : 'Читать полностью'}
+              </button>
+            </div>
+            <img
+              className="home-about-image"
+              src="/aboutus.webp"
+              alt="Игорь Шаповалов"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
@@ -351,6 +436,7 @@ function HomePage() {
           />
         </div>
       </section>
+
     </>
   )
 }

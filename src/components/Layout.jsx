@@ -58,7 +58,7 @@ function Layout() {
 
     const observeRevealElements = () => {
       const revealElements = mainContent.querySelectorAll(
-        '.home-hero, .home-services, .home-contacts, .page-content > *',
+        '.home-hero, .home-services, .home-contacts, .home-about, .page-content > *',
       )
 
       revealElements.forEach((element) => {
