@@ -142,6 +142,37 @@ const serviceItems = [
   },
 ]
 
+const postItems = [
+  {
+    title: 'Возврат одежды: позиция Верховного суда',
+    description:
+      'Купили пуховик, но решили вернуть, а продавец не принимает? Разбираем свежее определение Верховного суда.',
+    image: '/news/clothing return.jpg',
+    href: 'https://vk.ru/wall-132828443_119',
+  },
+  {
+    title: 'Основные риски индивидуального предпринимателя при работе с физическими лицами',
+    description:
+      'Многие предприниматели выбирают для своей деятельности статус индивидуального предпринимателя: это проще, чем создавать ООО, требует ',
+    image: '/news/riski-IP.jpg',
+    href: 'https://vk.ru/wall-132828443_117',
+  },
+  {
+    title: 'Страховая выплата по потере кормильца',
+    description:
+      'Страховая выплата по потере кормильца: как мы помогли вдове добиться положенного.',
+    image: '/news/insurance-payouts.jpg',
+    href: 'https://vk.ru/wall-132828443_109',
+  },
+  {
+    title: 'Расторжение брака и раздел имущества',
+    description:
+      'Расторжение брака и раздел имущества: что нужно знать и как подготовиться. ЧАСТЬ 1.',
+    image: '/news/divorce.jpg',
+    href: 'https://vk.ru/wall-132828443_98',
+  },
+]
+
 function HomePage() {
   const [openServiceIndex, setOpenServiceIndex] = useState(null)
   const [isAboutMobile, setIsAboutMobile] = useState(() =>
@@ -328,6 +359,54 @@ function HomePage() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section
+        className="home-posts"
+        id="news"
+        aria-labelledby="home-posts-title"
+      >
+        <div className="home-posts-inner">
+          <h2 className="section-title home-posts-title" id="home-posts-title">
+            Новости и статьи
+          </h2>
+
+          <div
+            className="home-posts-track"
+            role="region"
+            aria-label="Новости и статьи"
+            tabIndex={0}
+          >
+            {postItems.map((post) => (
+              <article className="home-post-card" key={post.title}>
+                <div className="home-post-card-image">
+                  <img src={post.image} alt="" loading="lazy" />
+                </div>
+                <div className="home-post-card-content">
+                  <p>{post.description}</p>
+                  <a
+                    className="home-post-card-link"
+                    href={post.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Открыть пост: ${post.title}`}
+                  >
+                    Подробнее
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <a
+            className="text-link-button home-posts-more"
+            href="https://vk.ru/pravochel74"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Больше постов
+          </a>
         </div>
       </section>
 

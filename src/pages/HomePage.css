@@ -276,6 +276,174 @@
   padding: 5px 12px;
 }
 
+.home-posts {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  flex: 0 0 100%;
+  scroll-margin-top: 120px;
+  color: var(--text-dark);
+  background: var(--background-dark);
+}
+
+.home-posts::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--background-dark);
+  box-shadow: 0 0 0 100vmax var(--background-dark);
+  clip-path: inset(0 -100vmax);
+  content: '';
+}
+
+.home-posts-inner {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 0;
+  min-height: 600px;
+  margin-inline: auto;
+  padding: 30px;
+}
+
+.home-posts-title {
+  color: var(--text-light);
+}
+
+.home-posts-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 12px;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--text-light) var(--accent-dark);
+  scrollbar-width: thin;
+}
+
+.home-posts-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.home-posts-track::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background: var(--accent-dark);
+}
+
+.home-posts-track::-webkit-scrollbar-thumb {
+  border: 2px solid var(--accent-dark);
+  border-radius: 8px;
+  background: var(--text-light);
+}
+
+.home-posts-track:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--text-light);
+  outline-offset: 3px;
+}
+
+.home-post-card {
+  display: flex;
+  min-width: 280px;
+  flex: 0 0 calc((100% - 32px) / 3);
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid var(--text-light);
+  border-radius: 10px;
+  background: var(--background-light);
+  scroll-snap-align: start;
+}
+
+.home-post-card-image {
+  position: relative;
+  height: 250px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: var(--accent-dark);
+}
+
+.home-post-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.home-post-card-content {
+  display: flex;
+  min-height: 145px;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px;
+  color: var(--text-dark);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.home-post-card-content p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.home-post-card-link {
+  align-self: flex-end;
+  margin-top: auto;
+  padding: 4px 10px;
+  border: 2px solid var(--background-dark);
+  border-radius: 8px;
+  color: var(--text-light);
+  background: var(--background-dark);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.home-post-card-link:hover,
+.home-post-card-link:focus-visible {
+  color: var(--text-dark);
+  background: var(--background-light);
+}
+
+.home-post-card-link:focus-visible {
+  outline: 2px solid var(--background-dark);
+  outline-offset: 3px;
+}
+
+.home-posts .home-posts-more {
+  display: block;
+  width: fit-content;
+  margin: 12px 0 0 auto;
+  border-color: var(--background-light);
+  color: var(--text-dark);
+  background: var(--background-light);
+  text-transform: uppercase;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.home-posts .home-posts-more:hover,
+.home-posts .home-posts-more:focus-visible {
+  border-color: var(--background-light);
+  color: var(--text-light);
+  background: var(--background-dark);
+}
+
+.home-posts .home-posts-more:focus-visible {
+  outline: 2px solid var(--text-light);
+  outline-offset: 3px;
+}
+
 .home-contacts {
   position: relative;
   isolation: isolate;
@@ -593,6 +761,10 @@
 .home-contacts {
     scroll-margin-top: 96px;
   }
+
+.home-posts {
+  scroll-margin-top: 96px;
+}
 }
 
 @media (max-width: 760px) {
@@ -625,6 +797,24 @@
 
   .home-services-link {
     margin-top: 20px;
+  }
+
+  .home-posts-inner {
+    min-height: 0;
+    padding: 38px 16px 35px;
+  }
+
+  .home-posts-title {
+    margin-bottom: 24px;
+  }
+
+  .home-posts-track {
+    gap: 12px;
+  }
+
+  .home-post-card {
+    min-width: 0;
+    flex-basis: min(82vw, 360px, 100%);
   }
 
   .home-contacts-inner {

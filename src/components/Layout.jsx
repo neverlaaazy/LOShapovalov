@@ -58,7 +58,7 @@ function Layout() {
 
     const observeRevealElements = () => {
       const revealElements = mainContent.querySelectorAll(
-        '.home-hero, .home-services, .home-contacts, .home-about, .page-content > *',
+        '.home-hero, .home-about, .home-services, .home-posts, .home-contacts, .page-content > *',
       )
 
       revealElements.forEach((element) => {
@@ -168,16 +168,20 @@ function Layout() {
                 <NavLink className="site-nav-a" to="/about" onClick={closeMenu}>
                   УСЛУГИ
                 </NavLink>
-                <NavLink className="site-nav-a" to="/about" onClick={closeMenu}>
-                  СТОИМОСТЬ
-                </NavLink>
-                <NavLink
+                <Link
+                  className="site-nav-a"
+                  to="/#news"
+                  onClick={closeMenu}
+                >
+                  НОВОСТИ
+                </Link>
+                <Link
                   className="site-nav-a"
                   to="/#contacts"
                   onClick={closeMenu}
                 >
                   КОНТАКТЫ
-                </NavLink>
+                </Link>
                 <NavLink
                   className="site-nav-button"
                   to="/about"
@@ -259,12 +263,12 @@ function Layout() {
               <NavLink className="footer-nav-link" to="/" end>
                 ГЛАВНАЯ
               </NavLink>
-              <NavLink className="footer-nav-link" to="/#contacts">
+              <Link className="footer-nav-link" to="/#contacts">
                 КОНТАКТЫ
-              </NavLink>
-              <NavLink className="footer-nav-link" to="/about">
-                СТОИМОСТЬ
-              </NavLink>
+              </Link>
+              <Link className="footer-nav-link" to="/#news">
+                НОВОСТИ
+              </Link>
               <NavLink className="footer-nav-link" to="/about">
                 УСЛУГИ
               </NavLink>
