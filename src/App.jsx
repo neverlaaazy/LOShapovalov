@@ -5,13 +5,14 @@ import HomePage from './pages/HomePage.jsx'
 import './pages/PageStyles.css'
 import './styles/Shared.css'
 
-const AboutPage = lazy(() => import('./pages/AboutPage.jsx'))
+const RequestPage = lazy(() => import('./pages/RequestPage.jsx'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'))
 const LocalActsPage = lazy(() => import('./pages/LocalActsPage.jsx'))
 const PersonalDataConsentPage = lazy(
   () => import('./pages/PersonalDataConsentPage.jsx'),
 )
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage.jsx'))
+const ServicesPage = lazy(() => import('./pages/ServicesPage.jsx'))
 const pageLoading = (
   <div className="page-content" role="status">
     Загрузка страницы…
@@ -24,10 +25,18 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route
-          path="about"
+          path="request"
           element={
             <Suspense fallback={pageLoading}>
-              <AboutPage />
+              <RequestPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="services"
+          element={
+            <Suspense fallback={pageLoading}>
+              <ServicesPage />
             </Suspense>
           }
         />

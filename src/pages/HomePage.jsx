@@ -222,7 +222,7 @@ function HomePage() {
               <span>И.М. Шаповалова</span>
             </h1>
             <p>Надежная правовая поддержка от консультации до результата</p>
-            <Link className="text-link-button" to="/about">
+            <Link className="text-link-button" to="/request">
               ОСТАВИТЬ ЗАЯВКУ
             </Link>
           </div>
@@ -354,7 +354,10 @@ function HomePage() {
                 })}
               </div>
 
-              <Link className="text-link-button home-services-link" to="/about">
+              <Link
+                className="text-link-button home-services-link"
+                to="/services"
+              >
                 СПИСОК УСЛУГ
               </Link>
             </div>
@@ -500,7 +503,7 @@ function HomePage() {
 
               <Link
                 className="text-link-button home-contact-request"
-                to="/about"
+                to="/request"
               >
                 ОСТАВИТЬ ЗАЯВКУ
               </Link>

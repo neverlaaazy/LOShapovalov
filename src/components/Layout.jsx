@@ -165,7 +165,7 @@ function Layout() {
                 <NavLink className="site-nav-a" to="/" end onClick={closeMenu}>
                   ГЛАВНАЯ
                 </NavLink>
-                <NavLink className="site-nav-a" to="/about" onClick={closeMenu}>
+                <NavLink className="site-nav-a" to="/services" onClick={closeMenu}>
                   УСЛУГИ
                 </NavLink>
                 <Link
@@ -184,7 +184,7 @@ function Layout() {
                 </Link>
                 <NavLink
                   className="site-nav-button"
-                  to="/about"
+                  to="/request"
                   onClick={closeMenu}
                 >
                   ОСТАВИТЬ ЗАЯВКУ
@@ -269,7 +269,7 @@ function Layout() {
               <Link className="footer-nav-link" to="/#news">
                 НОВОСТИ
               </Link>
-              <NavLink className="footer-nav-link" to="/about">
+              <NavLink className="footer-nav-link" to="/services">
                 УСЛУГИ
               </NavLink>
             </nav>
