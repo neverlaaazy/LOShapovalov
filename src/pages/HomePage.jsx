@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useOutletContext } from 'react-router-dom'
+import './HomePage.css'
 
 const serviceItems = [
   {
@@ -205,7 +206,7 @@ function HomePage() {
           <div className="home-about-content">
             <div className="home-about-copy">
               <p>
-                Юридический кабинет Игоря Шаповалова помогает разобраться в
+                Юридический кабинет Шаповалова Игоря Михайловича помогает разобраться в
                 правовых вопросах и определить, какие действия можно
                 предпринять в конкретной ситуации. В работе важно не только
                 изучить документы, но и понять обстоятельства дела и цели

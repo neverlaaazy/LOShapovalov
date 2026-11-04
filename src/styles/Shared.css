@@ -1,0 +1,43 @@
+.text-link-button {
+  padding: 7px;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  border: 2px solid var(--background-dark);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.text-link-button:hover,
+.text-link-button:focus {
+  background-color: var(--background-light);
+  color: var(--text-dark);
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 420ms ease,
+    transform 420ms ease;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
