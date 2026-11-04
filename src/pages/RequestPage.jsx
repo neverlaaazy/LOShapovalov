@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './RequestPage.css'
 
 function RequestPage() {
@@ -12,6 +13,24 @@ function RequestPage() {
         title="Форма заявки"
         loading="lazy"
       />
+      <nav className="request-legal-links" aria-label="Документы по обработке данных">
+        <p>Документы по обработке персональных данных:</p>
+        <ul>
+          <li>
+            <Link to="/local-acts">Локальные акты и документы</Link>
+          </li>
+          <li>
+            <Link to="/privacy-policy">
+              Правила обработки персональных данных (проект)
+            </Link>
+          </li>
+          <li>
+            <Link to="/personal-data-consent">
+              Согласие на обработку персональных данных (проект)
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </section>
   )
 }

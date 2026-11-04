@@ -11,3 +11,34 @@
   border: 0;
   background: var(--background-light);
 }
+
+.request-legal-links {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.request-legal-links p {
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.request-legal-links ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.request-legal-links a {
+  color: var(--text-dark);
+  text-underline-offset: 3px;
+}
+
+.request-legal-links a:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 3px;
+}
